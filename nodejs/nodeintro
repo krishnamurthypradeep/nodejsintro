@@ -1,0 +1,43 @@
+
+JavaScript
+
+ES3 -> 2003
+ES5 -> 2009
+
+ES2015 -> 2015 (ES6) (ES2015 --> ES2022)
+
+ES2024 -> 2024
+
+WebBrowsers
+chrome -> v8
+Firefox -> SpiderMonkey
+Safari -> Nitro
+Edge -> Chromium is based on V8
+
+
+Node.JS  -> V8 | SpiderMonkey | Nitro
+
+Node.JS 23 - ES2023
+
+FrontEnd -> JavaScript
+MobileApps -> JavaScript
+BrowserExtensions -> JavaScript
+BackEnd -> JavaScript
+DataBase(MongoDB) -> JavaScript
+
+ES Features
+
+1. Functional Programming
+2. Asynchronous Programming
+3. OOP (Prototype Based)
+4. Event Driven
+5. Dynamically Typed (TypeScript)
+
+Step1: Source Code -> Parsed Into AST (Abstract Syntax Tree)
+Step2: AST is used to create a bytecode
+Step3: ByteCode is interpreted to machine Code
+Step4: MachineCode is executed
+
+v8 -> JIT Compiler
+javac
+java

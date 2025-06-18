@@ -8,7 +8,7 @@ export default class ReadFilePublisher extends EventEmitter{
     readFile = (fileName: string) => {
         //fs.readFileSync()
     
-        fs.readFile(fileName,(err,data)=>{
+        fs.readFile(fileName,(err:NodeJS.ErrnoException,data:string)=>{
             if(err){
                 return this.emit('error',err)
             }

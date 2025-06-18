@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const events_1 = __importDefault(require("events"));
-const fs_1 = __importDefault(require("fs"));
+const fs = require('fs');
 class ReadFilePublisher extends events_1.default {
     constructor() {
         super(...arguments);
         this.readFile = (fileName) => {
             //fs.readFileSync()
-            fs_1.default.readFile(fileName, (err, data) => {
+            fs.readFile(fileName, (err, data) => {
                 if (err) {
                     return this.emit('error', err);
                 }

@@ -1,0 +1,7 @@
+import { Product } from "../model/product"
+const  products: Product[] = [
+{ id: 1, name: 'iPhone 15', price: 999 },
+  { id: 2, name: 'Galaxy S24', price: 899 },
+]
+
+export default products

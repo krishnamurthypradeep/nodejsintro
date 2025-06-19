@@ -8,19 +8,19 @@ const productSchema:Schema<IProduct>  = new Schema({
         default: () => new mongoose.Types.ObjectId()
     },
     name: {
-       
+       type: mongoose.Schema.Types.String,
         required: true
     },
     price: {
-       
+       type: mongoose.Schema.Types.Number,
         required: true,
         min: 1000,
         max: 100000
     },
 },
     {
-        timestamps: true,
-         versionKey: true
+        timestamps: true
+       
     }
 )
 // Decorator Pattern

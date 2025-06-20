@@ -1,0 +1,104 @@
+NestJS Microservices App
+
+This project implements a microservices architecture using NestJS, Docker Compose, MongoDB, Kafka, and Redis. It includes four services:
+
+Order Service: Handles order creation and status updates.
+
+Inventory Service: Manages product inventory and responds to availability checks.
+
+Notification Service: Persists and logs order status notifications.
+
+API Gateway: Exposes REST endpoints, handles caching (Redis), and applies resilience patterns (timeouts, retries, circuit breakers).
+
+Prerequisites
+
+Docker & Docker Compose installed
+
+At least 4 GB RAM available for containers
+
+Project Structure
+
+microservices-app/
+├── order-service/
+├── inventory-service/
+├── gateway-service/
+└── docker-compose.yml
+
+Getting Started
+
+1. Clone the repository
+
+git clone <your-repo-url>
+cd nestjs-microservices-app
+
+2. Build and start all services
+
+Launch all services (MongoDB, Redis, Zookeeper, Kafka, and the 4 microservices) with a single command:
+
+docker-compose up --build -d
+
+Order Service listens internally on port 3000.
+
+Inventory Service listens internally on port 4000.
+
+Notification Service listens internally on port 5000.
+
+API Gateway listens on host port 5001.
+
+Redis is exposed on 6379 (used by Gateway).
+
+Logs can be viewed via Docker (docker-compose logs -f).
+
+3. Verify Services
+
+Order Service (HTTP + Kafka)
+
+curl http://localhost:3000/orders
+
+Inventory Service
+
+curl http://localhost:4000/inventory/PRODUCT_ID/QUANTITY
+
+Notification Service
+
+No direct HTTP endpoints (Kafka only).
+
+API Gateway
+
+Create an order:
+
+curl -X POST http://localhost:5001/orders \
+  -H "Content-Type: application/json" \
+  -d '{"productId":"p1","quantity":2}'
+
+Check inventory (cached):
+
+curl http://localhost:5000/inventory/p1/2
+
+4. Stopping the Services
+
+docker-compose down
+
+This will stop and remove the containers, networks, and volumes created by up.
+
+Environment Variables
+
+You can customize hostnames, ports, and settings via .env files or by exporting in your shell:
+
+ORDER_SERVICE_URL (default: http://order-service:3000)
+
+INVENTORY_SERVICE_URL (default: http://inventory-service:3000)
+
+REDIS_HOST, REDIS_PORT
+
+KAFKA_BROKERS
+
+Troubleshooting
+
+Redis cache empty: Ensure you call the cached GET endpoints (/inventory/...) at least twice and point to the Gateway port (4000).
+
+Kafka connectivity: Verify KAFKA_BROKERS env and that your services are on the same Docker network.
+
+License
+
+MIT
